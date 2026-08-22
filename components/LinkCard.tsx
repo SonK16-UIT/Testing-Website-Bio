@@ -12,6 +12,7 @@ interface LinkCardProps {
   badge?: string;
   featured?: boolean;
   delay?: number;
+  iconBg?: string;
 }
 
 export default function LinkCard({
@@ -22,6 +23,7 @@ export default function LinkCard({
   badge,
   featured = false,
   delay = 0,
+  iconBg,
 }: LinkCardProps) {
   return (
     <motion.a
@@ -33,7 +35,7 @@ export default function LinkCard({
       transition={{ duration: 0.4, delay }}
       className={`group relative w-full flex items-center justify-between p-4 rounded-2xl transition-all duration-300 ${
         featured
-          ? 'bg-gradient-to-r from-brand-red/20 via-brand-surface to-brand-surface border-2 border-brand-red/60 shadow-lg shadow-brand-red/20 hover:border-brand-red hover:shadow-brand-red/40'
+          ? 'bg-gradient-to-r from-brand-red/10 via-brand-surface to-brand-surface border border-brand-red/40 hover:border-brand-red hover:shadow-md hover:shadow-brand-red/20'
           : 'glass-card glass-card-hover'
       }`}
     >
@@ -54,9 +56,7 @@ export default function LinkCard({
       {/* Left Content (Icon + Labels) */}
       <div className="flex items-center gap-3.5 min-w-0">
         <div className={`p-3 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${
-          featured 
-            ? 'bg-brand-red text-white shadow-md shadow-brand-red/50' 
-            : 'bg-brand-surfaceHover text-brand-red border border-white/10 group-hover:bg-brand-red group-hover:text-white'
+          iconBg || (featured ? 'bg-brand-red/20 text-brand-red border border-brand-red/40 group-hover:bg-brand-red group-hover:text-white' : 'bg-brand-surfaceHover text-brand-red border border-white/10 group-hover:bg-brand-red group-hover:text-white')
         }`}>
           {icon}
         </div>

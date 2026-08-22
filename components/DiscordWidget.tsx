@@ -2,18 +2,19 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Copy, Check, ExternalLink, MessageSquare } from 'lucide-react';
+import { Copy, Check, ExternalLink } from 'lucide-react';
+import { SiDiscord } from 'react-icons/si';
 
 interface DiscordWidgetProps {
-  userId: string;
-  username: string;
+  userId?: string;
+  username?: string;
   delay?: number;
 }
 
 export default function DiscordWidget({
   userId = '374148534531915777',
   username = 'shallred',
-  delay = 0.4,
+  delay = 0.3,
 }: DiscordWidgetProps) {
   const [copied, setCopied] = useState(false);
 
@@ -33,9 +34,9 @@ export default function DiscordWidget({
       className="glass-card glass-card-hover w-full p-4 rounded-2xl flex items-center justify-between group border border-white/5 relative"
     >
       <div className="flex items-center gap-3.5 min-w-0 flex-1">
-        {/* Discord Icon Avatar */}
-        <div className="p-3 rounded-xl bg-[#5865F2]/20 text-[#5865F2] border border-[#5865F2]/30 group-hover:bg-[#5865F2] group-hover:text-white transition-colors duration-300 shrink-0">
-          <MessageSquare className="w-5 h-5" />
+        {/* Official Discord Blurple Brand Logo */}
+        <div className="p-3 rounded-xl bg-[#5865F2]/20 text-[#5865F2] border border-[#5865F2]/30 group-hover:bg-[#5865F2] group-hover:text-white transition-all duration-300 shrink-0">
+          <SiDiscord className="w-5 h-5" />
         </div>
 
         <div className="text-left truncate flex-1">

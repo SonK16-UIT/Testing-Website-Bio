@@ -8,14 +8,14 @@ import CopyWidget from '@/components/CopyWidget';
 import SocialFooter from '@/components/SocialFooter';
 import { motion } from 'framer-motion';
 import { 
-  Youtube, 
-  Video, 
-  ShoppingBag, 
   Sparkles,
-  Trophy,
   Flame,
-  Clapperboard
+  Clapperboard,
+  Gamepad2,
+  ShoppingBag
 } from 'lucide-react';
+import { FaYoutube } from 'react-icons/fa';
+import { SiTiktok } from 'react-icons/si';
 
 export default function Home() {
   return (
@@ -33,7 +33,7 @@ export default function Home() {
         {/* Grid: 1 column on mobile/tablet, 12 columns on desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* ==================== LEFT COLUMN: Profile & Links ==================== */}
+          {/* ==================== LEFT COLUMN: Profile & Links (Span 5) ==================== */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-8">
             
             {/* Profile Avatar & Bio Header */}
@@ -51,28 +51,30 @@ export default function Home() {
             {/* Core Link Stack */}
             <div className="space-y-3.5">
               
-              {/* Baseline Link 1: YouTube Channel */}
+              {/* Baseline Link 1: YouTube Channel (Official Brand Logo) */}
               <LinkCard
                 title="YouTube Channel"
                 subtitle="Subscribe for gameplay videos & highlights"
                 url="https://www.youtube.com/@ill_be_red"
-                icon={<Youtube className="w-6 h-6" />}
+                icon={<FaYoutube className="w-6 h-6 text-[#FF0000]" />}
+                iconBg="bg-[#FF0000]/15 text-[#FF0000] border border-[#FF0000]/30 group-hover:bg-[#FF0000] group-hover:text-white"
                 badge="MAIN CHANNEL"
                 featured={true}
                 delay={0.1}
               />
 
-              {/* Baseline Link 2: TikTok Profile */}
+              {/* Baseline Link 2: TikTok Profile (Official Brand Logo) */}
               <LinkCard
                 title="TikTok Profile"
                 subtitle="Daily short gaming clips, memes & stream moments"
                 url="https://www.tiktok.com/@shallred"
-                icon={<Video className="w-6 h-6" />}
+                icon={<SiTiktok className="w-5 h-5 text-white" />}
+                iconBg="bg-black/60 text-white border border-white/20 group-hover:bg-white group-hover:text-black"
                 badge="VIRAL CLIPS"
                 delay={0.2}
               />
 
-              {/* Discord Profile Widget */}
+              {/* Discord Profile Widget (Official SiDiscord Logo & Blurple Color) */}
               <DiscordWidget 
                 username="shallred"
                 userId="374148534531915777"
@@ -92,7 +94,7 @@ export default function Home() {
                 title="Gaming Gear & Setup"
                 subtitle="Check out my PC specs & gear list"
                 url="https://amazon.com"
-                icon={<ShoppingBag className="w-6 h-6" />}
+                icon={<ShoppingBag className="w-5 h-5 text-slate-200" />}
                 delay={0.5}
               />
 
@@ -101,22 +103,22 @@ export default function Home() {
           </div>
 
 
-          {/* ==================== RIGHT COLUMN: Featured Media & Video Showcase ==================== */}
+          {/* ==================== RIGHT COLUMN: Featured Media Showcase (Span 7) ==================== */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Desktop Section Tag */}
+            {/* Desktop Section Header */}
             <div className="hidden lg:flex items-center gap-2 text-brand-red font-display font-extrabold text-sm tracking-wider uppercase">
               <Clapperboard className="w-4 h-4" />
               <span>Featured Media & Content Showcase</span>
             </div>
 
-            {/* Featured Video Showcase Widget */}
+            {/* Featured YouTube Upload Preview Showcase */}
             <LatestVideoCard channelUrl="https://www.youtube.com/@ill_be_red" delay={0.2} />
 
-            {/* Interactive Content Cards Grid for Desktop/Tablet */}
+            {/* Content Highlights Block (Clean & Uncluttered) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
-              {/* Highlight Card 1: Channel Tag */}
+              {/* Highlight Card 1: Gameplay Highlights */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -128,13 +130,13 @@ export default function Home() {
                     <Flame className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-brand-red/20 text-brand-red">
-                    CONTENT DROP
+                    NEW UPLOADS
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-white text-base">New Videos Weekly</h4>
+                  <h4 className="font-display font-bold text-white text-base">Weekly Gameplay</h4>
                   <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                    Watch high-skill gameplay, funny stream edits & challenge runs on YouTube.
+                    High-skill plays, stream edits & gaming challenge runs released on YouTube & TikTok.
                   </p>
                 </div>
                 <a
@@ -143,11 +145,11 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-xs font-bold text-brand-red hover:text-brand-redGlow flex items-center gap-1 pt-2 transition-colors"
                 >
-                  <span>Explore Channel</span> &rarr;
+                  <span>Watch on YouTube</span> &rarr;
                 </a>
               </motion.div>
 
-              {/* Highlight Card 2: Schedule & Announcements */}
+              {/* Highlight Card 2: Community Hub */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,49 +157,55 @@ export default function Home() {
                 className="glass-card p-4 rounded-2xl border border-white/5 space-y-2 flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between">
-                  <div className="p-2.5 rounded-xl bg-brand-surfaceHover text-brand-white border border-white/10">
-                    <Trophy className="w-5 h-5" />
+                  <div className="p-2.5 rounded-xl bg-[#5865F2]/20 text-[#7983F5] border border-[#5865F2]/30">
+                    <Gamepad2 className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                    COMMUNITY
+                  <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#5865F2]/20 text-[#7983F5]">
+                    CONNECT
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-white text-base">Creator Code: SHALLRED</h4>
+                  <h4 className="font-display font-bold text-white text-base">Direct Discord</h4>
                   <p className="text-xs text-brand-muted mt-1 leading-relaxed">
-                    Use code <span className="text-brand-red font-mono font-bold">SHALLRED</span> at checkout to support future content!
+                    Add user <span className="text-white font-semibold">@shallred</span> on Discord or copy user ID to get in touch.
                   </p>
                 </div>
-                <div className="text-xs font-bold text-slate-300 flex items-center gap-1 pt-2">
-                  <span>Support Channel</span>
-                </div>
+                <a
+                  href="https://discord.com/users/374148534531915777"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#7983F5] hover:text-white flex items-center gap-1 pt-2 transition-colors"
+                >
+                  <span>Discord Profile</span> &rarr;
+                </a>
               </motion.div>
 
             </div>
 
-            {/* Embedded YouTube Channel Trailer Player Frame */}
+            {/* Direct Channel Redirect Banner (Reliable & Clean - No Broken Iframe) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="glass-card p-4 rounded-2xl border border-brand-red/30 space-y-3"
+              className="glass-card p-5 rounded-2xl border border-brand-red/30 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-brand-surface via-brand-surfaceHover to-brand-surface shadow-lg"
             >
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-white flex items-center gap-2">
-                  <Youtube className="w-4 h-4 text-brand-red" />
-                  <span>Channel Highlights & Shorts</span>
-                </span>
-                <span className="text-[10px] font-mono text-brand-muted">@ill_be_red</span>
+              <div className="flex items-center gap-3.5 text-left">
+                <div className="p-3 rounded-xl bg-[#FF0000]/20 text-[#FF0000] border border-[#FF0000]/40 shrink-0">
+                  <FaYoutube className="w-7 h-7" />
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-white text-base">ShallRed YouTube Channel</h4>
+                  <p className="text-xs text-brand-muted font-medium">Subscribe for all full-length gaming videos & shorts (@ill_be_red)</p>
+                </div>
               </div>
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-black">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed?listType=user_uploads&list=ill_be_red"
-                  title="ShallRed YouTube Latest Videos"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              <a
+                href="https://www.youtube.com/@ill_be_red"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-brand-red hover:bg-red-600 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-brand-red/30 shrink-0 text-center"
+              >
+                Visit Channel
+              </a>
             </motion.div>
 
           </div>
