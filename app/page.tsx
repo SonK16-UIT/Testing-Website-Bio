@@ -1,19 +1,18 @@
 'use client';
 
 import AvatarHeader from '@/components/AvatarHeader';
+import LatestVideoCard from '@/components/LatestVideoCard';
 import LinkCard from '@/components/LinkCard';
+import DiscordWidget from '@/components/DiscordWidget';
 import CopyWidget from '@/components/CopyWidget';
 import SocialFooter from '@/components/SocialFooter';
 import { motion } from 'framer-motion';
 import { 
   Youtube, 
   Video, 
-  Tv, 
-  MessageSquare, 
   ShoppingBag, 
-  Trophy, 
   Sparkles,
-  Gamepad2
+  Trophy
 } from 'lucide-react';
 
 export default function Home() {
@@ -32,7 +31,10 @@ export default function Home() {
         {/* Profile Avatar & Header */}
         <AvatarHeader />
 
-        {/* Section Divider with Sawtooth Vibe */}
+        {/* Latest YouTube Video Showcase */}
+        <LatestVideoCard channelUrl="https://www.youtube.com/@ill_be_red" delay={0.15} />
+
+        {/* Section Divider */}
         <div className="flex items-center gap-3 my-4">
           <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-brand-border to-brand-border" />
           <span className="text-[11px] font-extrabold uppercase tracking-widest text-brand-red flex items-center gap-1">
@@ -44,48 +46,35 @@ export default function Home() {
         {/* Core Link Stack */}
         <div className="space-y-3.5">
           
-          {/* Baseline Link 1: YouTube (Featured Main Channel) */}
+          {/* Baseline Link 1: YouTube Channel */}
           <LinkCard
             title="YouTube Channel"
-            subtitle="Subscribe for full gameplay videos & stream highlights"
+            subtitle="Subscribe for gameplay videos & highlights"
             url="https://www.youtube.com/@ill_be_red"
             icon={<Youtube className="w-6 h-6" />}
             badge="MAIN CHANNEL"
             featured={true}
-            delay={0.1}
+            delay={0.2}
           />
 
-          {/* Baseline Link 2: TikTok (Short Form Highlights) */}
+          {/* Baseline Link 2: TikTok Profile */}
           <LinkCard
             title="TikTok Profile"
             subtitle="Daily short gaming clips, memes & stream moments"
             url="https://www.tiktok.com/@shallred"
             icon={<Video className="w-6 h-6" />}
             badge="VIRAL CLIPS"
-            delay={0.2}
-          />
-
-          {/* Secondary Link: Twitch / Live Stream */}
-          <LinkCard
-            title="Twitch Livestreams"
-            subtitle="Catch me live playing games with chat!"
-            url="https://twitch.tv"
-            icon={<Tv className="w-6 h-6" />}
-            badge="LIVE STREAM"
             delay={0.3}
           />
 
-          {/* Secondary Link: Discord Community */}
-          <LinkCard
-            title="Join Discord Server"
-            subtitle="Hang out, game together & join stream announcements"
-            url="https://discord.gg"
-            icon={<MessageSquare className="w-6 h-6" />}
-            badge="COMMUNITY"
+          {/* Discord Profile Widget */}
+          <DiscordWidget 
+            username="shallred"
+            userId="374148534531915777"
             delay={0.4}
           />
 
-          {/* Copy Widget: Support Creator Code */}
+          {/* Creator Support Code Copy Widget */}
           <CopyWidget
             label="Creator Code"
             value="SHALLRED"
@@ -93,10 +82,10 @@ export default function Home() {
             delay={0.5}
           />
 
-          {/* Secondary Link: Setup & Wishlist */}
+          {/* Setup / Gear List */}
           <LinkCard
             title="Gaming Gear & Setup"
-            subtitle="Check out my stream setup, PC specs & gear list"
+            subtitle="Check out my PC specs & gear list"
             url="https://amazon.com"
             icon={<ShoppingBag className="w-6 h-6" />}
             delay={0.6}
@@ -104,7 +93,7 @@ export default function Home() {
 
         </div>
 
-        {/* Gaming Banner Widget */}
+        {/* Gaming Info Card */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -116,8 +105,8 @@ export default function Home() {
               <Trophy className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs font-bold text-white uppercase tracking-wider">Next Live Stream</p>
-              <p className="text-xs text-brand-muted font-medium">Schedule announced weekly on Discord & TikTok!</p>
+              <p className="text-xs font-bold text-white uppercase tracking-wider">New Content Drops</p>
+              <p className="text-xs text-brand-muted font-medium">Follow on YouTube & TikTok for daily releases!</p>
             </div>
           </div>
         </motion.div>
