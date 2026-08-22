@@ -2,28 +2,28 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://shallred.vercel.app'),
-  title: 'ShallRed | Official Link in Bio & Gaming Hub',
-  description: 'Official link-in-bio for ShallRed (@ill_be_red / @shallred). Watch latest gaming videos on YouTube, TikTok clips, join the community & explore setup wishlist.',
-  keywords: ['ShallRed', 'ill_be_red', 'Gaming Creator', 'Link in Bio', 'YouTube Gaming', 'TikTok Gaming'],
-  authors: [{ name: 'ShallRed' }],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://conny.vercel.app'),
+  title: 'Conny (@conny_ny) | Official Link in Bio & VTuber Hub',
+  description: 'Official link-in-bio for Conny (@conny_ny). Watch latest YouTube videos, Facebook fanpage updates, streams & join the cozy community!',
+  keywords: ['Conny', 'conny_ny', 'VTuber', 'Gaming Creator', 'Link in Bio', 'YouTube Gaming', 'Facebook Fanpage'],
+  authors: [{ name: 'Conny' }],
   openGraph: {
-    title: 'ShallRed | Official Link in Bio',
-    description: 'Official link-in-bio for ShallRed. Watch gaming videos, TikToks, and connect with the community.',
+    title: 'Conny (@conny_ny) | Official Link in Bio',
+    description: 'Official link-in-bio for Conny. Connect across YouTube, Facebook & Community Hubs.',
     type: 'website',
     images: [
       {
         url: '/avatar.png',
         width: 800,
         height: 800,
-        alt: 'ShallRed Avatar',
+        alt: 'Conny Avatar',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ShallRed | Official Gaming Hub',
-    description: 'Connect with ShallRed across YouTube, TikTok & Gaming networks.',
+    title: 'Conny | Official Gaming & VTuber Hub',
+    description: 'Connect with Conny on YouTube & Facebook Fanpage.',
     images: ['/avatar.png'],
   },
 };
@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-brand-bg text-brand-white min-h-screen selection:bg-brand-red selection:text-white antialiased">
+      <body className="bg-brand-bg text-brand-white min-h-screen selection:bg-brand-pink selection:text-white antialiased">
         {children}
       </body>
     </html>

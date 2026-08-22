@@ -7,35 +7,103 @@
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-outfit: 'Outfit', sans-serif;
+
+  /* Default Pink Theme (Conny) */
+  --bg-main: #120E16;
+  --surface-main: #1D1726;
+  --surface-hover: #292036;
+  --border-main: #3A2D4C;
+  --primary-accent: #F4719C;
+  --secondary-accent: #A855F7;
+  --glow-accent: #FF8DAA;
+  --text-main: #FAF5F8;
+  --text-muted: #C4B5FD;
+}
+
+/* 1. Red Theme (ShallRed) */
+[data-theme="red"] {
+  --bg-main: #0F1117;
+  --surface-main: #161922;
+  --surface-hover: #1E222F;
+  --border-main: #2A2F3D;
+  --primary-accent: #E51937;
+  --secondary-accent: #FF3B5C;
+  --glow-accent: #FF5A78;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+}
+
+/* 2. Pink Theme (Conny) */
+[data-theme="pink"] {
+  --bg-main: #120E16;
+  --surface-main: #1D1726;
+  --surface-hover: #292036;
+  --border-main: #3A2D4C;
+  --primary-accent: #F4719C;
+  --secondary-accent: #A855F7;
+  --glow-accent: #FF8DAA;
+  --text-main: #FAF5F8;
+  --text-muted: #C4B5FD;
+}
+
+/* 3. Cyber Cyan Theme */
+[data-theme="cyan"] {
+  --bg-main: #0A0E17;
+  --surface-main: #121A29;
+  --surface-hover: #1A263B;
+  --border-main: #1E2D4A;
+  --primary-accent: #00F0FF;
+  --secondary-accent: #7000FF;
+  --glow-accent: #38BDF8;
+  --text-main: #F0F8FF;
+  --text-muted: #7DD3FC;
+}
+
+/* 4. Emerald Forest Theme */
+[data-theme="emerald"] {
+  --bg-main: #061712;
+  --surface-main: #0D261E;
+  --surface-hover: #15382D;
+  --border-main: #174234;
+  --primary-accent: #10B981;
+  --secondary-accent: #34D399;
+  --glow-accent: #6EE7B7;
+  --text-main: #F0FDF4;
+  --text-muted: #A7F3D0;
+}
+
+/* 5. Gold Amber Theme */
+[data-theme="gold"] {
+  --bg-main: #140F07;
+  --surface-main: #21180C;
+  --surface-hover: #2E2211;
+  --border-main: #3B2C16;
+  --primary-accent: #F59E0B;
+  --secondary-accent: #FBBF24;
+  --glow-accent: #FDE68A;
+  --text-main: #FFFBEB;
+  --text-muted: #FDE68A;
 }
 
 body {
-  background-color: #0F1117;
-  color: #F8FAFC;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   font-family: var(--font-inter);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Custom background pattern inspired by character's sweater sawtooth design */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(229, 25, 55, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Clean, modern ambient background without polka dots */
+.bg-clean-gradient {
+  background: radial-gradient(circle at 50% 0%, var(--surface-main) 0%, var(--bg-main) 70%);
 }
 
-.sawtooth-border {
-  background: linear-gradient(135deg, #E51937 25%, transparent 25%) -10px 0,
-              linear-gradient(225deg, #E51937 25%, transparent 25%) -10px 0,
-              linear-gradient(315deg, #E51937 25%, transparent 25%),
-              linear-gradient(45deg, #E51937 25%, transparent 25%);
-  background-size: 20px 20px;
-}
-
-/* Glassmorphism utility */
+/* Glassmorphism utility using CSS variables */
 .glass-card {
-  background: rgba(22, 25, 34, 0.75);
+  background: var(--surface-main);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-main);
 }
 
 .glass-card-hover {
@@ -43,10 +111,16 @@ body {
 }
 
 .glass-card-hover:hover {
-  background: rgba(30, 34, 47, 0.9);
-  border-color: rgba(229, 25, 55, 0.5);
-  box-shadow: 0 10px 30px -10px rgba(229, 25, 55, 0.35);
+  background: var(--surface-hover);
+  border-color: var(--primary-accent);
+  box-shadow: 0 10px 30px -10px var(--primary-accent);
   transform: translateY(-3px);
+}
+
+/* Dynamic theme background gradient spotlight */
+.theme-spotlight {
+  background: radial-gradient(circle, var(--primary-accent) 0%, var(--secondary-accent) 100%);
+  opacity: 0.18;
 }
 
 /* Custom Scrollbar */
@@ -54,12 +128,12 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F1117;
+  background: var(--bg-main);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2F3D;
+  background: var(--border-main);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E51937;
+  background: var(--primary-accent);
 }
