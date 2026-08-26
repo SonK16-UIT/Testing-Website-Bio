@@ -3,16 +3,18 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Copy, Check, Gamepad2 } from 'lucide-react';
+import { Language, translations } from '@/lib/translations';
 
 interface CopyWidgetProps {
   label: string;
   value: string;
   subtext?: string;
-  delay?: number;
+  lang?: Language;
 }
 
-export default function CopyWidget({ label, value, subtext = 'Click to copy' }: CopyWidgetProps) {
+export default function CopyWidget({ label, value, subtext, lang = 'en' }: CopyWidgetProps) {
   const [copied, setCopied] = useState(false);
+  const t = translations[lang] || translations.en;
 
   const handleCopy = async () => {
     try {
@@ -30,10 +32,10 @@ export default function CopyWidget({ label, value, subtext = 'Click to copy' }: 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       onClick={handleCopy}
-      className="glass-card glass-card-hover cursor-pointer w-full p-4 rounded-2xl flex items-center justify-between group border border-white/5"
+      className="glass-card glass-card-hover cursor-pointer w-full p-3.5 rounded-2xl flex items-center justify-between group border border-white/5"
     >
-      <div className="flex items-center gap-3.5 min-w-0">
-        <div className="p-3 rounded-xl bg-[var(--surface-hover)] text-[var(--primary-accent)] border border-white/10 group-hover:bg-[var(--primary-accent)] group-hover:text-white transition-colors duration-300">
+      <div className="flex items-center gap-3 min-w-0">
+        <div className="p-2.5 rounded-xl bg-[var(--surface-hover)] text-[var(--primary-accent)] border border-white/10 group-hover:bg-[var(--primary-accent)] group-hover:text-white transition-colors duration-300">
           <Gamepad2 className="w-5 h-5" />
         </div>
         <div className="text-left truncate">
@@ -43,7 +45,9 @@ export default function CopyWidget({ label, value, subtext = 'Click to copy' }: 
               {value}
             </span>
           </div>
-          <p className="text-xs text-[var(--text-muted)] font-medium">{copied ? 'Copied to clipboard!' : subtext}</p>
+          <p className="text-[11px] text-[var(--text-muted)] font-medium">
+            {copied ? t.copiedMsg : (subtext || t.clickToCopy)}
+          </p>
         </div>
       </div>
 

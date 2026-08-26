@@ -32,7 +32,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; frame-src 'self' https://www.youtube.com https://www.facebook.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: blob: https:; font-src 'self' https:; connect-src 'self' https://iwcsdzlfhokacefmdzvc.supabase.co wss://iwcsdzlfhokacefmdzvc.supabase.co; frame-src 'self' https://www.youtube.com https://www.facebook.com;",
           },
         ],
       },

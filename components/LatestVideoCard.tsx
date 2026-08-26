@@ -1,16 +1,21 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Play, Sparkles } from 'lucide-react';
+import { Play, Sparkles, ExternalLink } from 'lucide-react';
 import { FaYoutube } from 'react-icons/fa';
+import { Language, translations } from '@/lib/translations';
 
 interface LatestVideoCardProps {
   channelUrl?: string;
+  lang?: Language;
 }
 
 export default function LatestVideoCard({
   channelUrl = 'https://www.youtube.com/@conny_ny',
+  lang = 'en'
 }: LatestVideoCardProps) {
+  const t = translations[lang] || translations.en;
+
   return (
     <motion.div
       initial={false}
@@ -22,51 +27,63 @@ export default function LatestVideoCard({
       <div className="bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)] text-white text-[11px] font-extrabold uppercase px-3 py-1 flex items-center justify-between tracking-wider">
         <div className="flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>FEATURED YOUTUBE CONTENT</span>
+          <span>{t.showcaseTitle}</span>
         </div>
         <span className="flex items-center gap-1 text-[10px] bg-black/30 px-2 py-0.5 rounded-full font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary-accent)] animate-ping" />
-          LATEST VIDEO
+          {t.latestVideoBadge}
         </span>
       </div>
 
       {/* Video Preview Container */}
-      <a
-        href={channelUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block relative aspect-video w-full bg-slate-950 group cursor-pointer overflow-hidden"
-      >
-        {/* Featured Thumbnail Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center filter brightness-95 group-hover:scale-105 transition-transform duration-700"
-          style={{ backgroundImage: `url('/youtube_featured.jpg')` }}
-        />
+      <div className="p-4 space-y-3">
+        <a
+          href={channelUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block relative aspect-video w-full rounded-xl bg-slate-950 group/thumb cursor-pointer overflow-hidden border border-white/10"
+        >
+          {/* Featured Thumbnail Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center filter brightness-95 group-hover/thumb:scale-105 transition-transform duration-700"
+            style={{ backgroundImage: `url('/youtube_featured.jpg')` }}
+          />
 
-        {/* Dark Vignette Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-black/40 to-black/20 group-hover:bg-black/20 transition-colors duration-300 z-10" />
+          {/* Dark Vignette Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-black/30 to-black/10 group-hover/thumb:bg-black/20 transition-colors duration-300 z-10" />
 
-        {/* Play Button Icon Center Glow */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[var(--primary-accent)] to-[var(--secondary-accent)] text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300 border-2 border-white/50">
-            <Play className="w-7 h-7 fill-white translate-x-0.5" />
+          {/* Play Button Icon Center Glow */}
+          <div className="absolute inset-0 flex items-center justify-center z-20">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[var(--primary-accent)] to-[var(--secondary-accent)] text-white flex items-center justify-center shadow-2xl group-hover/thumb:scale-110 transition-all duration-300 border-2 border-white/50">
+              <Play className="w-6 h-6 fill-white translate-x-0.5" />
+            </div>
           </div>
-        </div>
+        </a>
 
-        {/* Video Title Overlay Bottom */}
-        <div className="absolute bottom-3 left-4 right-4 z-20 text-left">
-          <div className="flex items-center gap-1.5 text-[var(--primary-accent)] text-xs font-extrabold uppercase tracking-wide mb-1">
-            <FaYoutube className="w-4 h-4 text-[#FF0000]" />
-            <span>@conny_ny &bull; YouTube</span>
+        {/* Action-Oriented Bottom CTA Row */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-1">
+          <div className="text-left space-y-0.5">
+            <div className="flex items-center gap-1.5 text-[var(--primary-accent)] text-xs font-extrabold uppercase tracking-wide">
+              <FaYoutube className="w-4 h-4 text-[#FF0000]" />
+              <span>@conny_ny &bull; YouTube Showcase</span>
+            </div>
+            <h3 className="font-display font-bold text-white text-sm md:text-base leading-tight">
+              {t.showcaseHeadline}
+            </h3>
           </div>
-          <h3 className="font-display font-bold text-white text-base md:text-lg leading-tight group-hover:text-[var(--glow-accent)] transition-colors line-clamp-1">
-            Watch Conny's Latest Videos & Cozy Streams
-          </h3>
-          <p className="text-xs text-slate-300 font-medium mt-0.5">
-            Click to open YouTube Channel (@conny_ny)
-          </p>
+
+          {/* Action-Oriented Direct CTA Button */}
+          <a
+            href={channelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[var(--primary-accent)] to-[var(--secondary-accent)] hover:opacity-95 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shrink-0"
+          >
+            <span>{t.watchLatestBtn}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
-      </a>
+      </div>
     </motion.div>
   );
 }
