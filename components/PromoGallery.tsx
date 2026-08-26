@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ExternalLink, Image as ImageIcon } from 'lucide-react';
 import { Language, translations } from '@/lib/translations';
+import TimeoutImage from '@/components/TimeoutImage';
 import { supabase } from '@/lib/supabase';
 
 export interface FeaturedGalleryItem {
@@ -86,20 +87,17 @@ export default function PromoGallery({ lang = 'en' }: PromoGalleryProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${featuredItem.src}')` }}
-          />
+            className="absolute inset-0"
+          >
+            <TimeoutImage
+              src={featuredItem.src}
+              fallbackSrc="/gallery/huhuket.jpg"
+              timeoutMs={2500}
+              alt={featuredItem.title}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </AnimatePresence>
-
-        {/* Fallback img element for network error resilience */}
-        <img
-          src={featuredItem.src}
-          alt={featuredItem.title}
-          onError={(e) => {
-            (e.currentTarget.parentElement as HTMLElement).style.backgroundImage = "url('/gallery/huhuket.jpg')";
-          }}
-          className="opacity-0 absolute inset-0 w-full h-full object-cover pointer-events-none"
-        />
 
         {/* Dark Vignette Overlay Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-black/30 to-black/10 z-10 pointer-events-none" />
