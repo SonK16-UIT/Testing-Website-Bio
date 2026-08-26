@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/cloudflare-postbuild.js",
+    "deploy": "npm run build && npx wrangler deploy",
     "start": "npx serve out",
     "preview": "npx serve out",
     "lint": "next lint"
