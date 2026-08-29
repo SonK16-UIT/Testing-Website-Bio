@@ -8,6 +8,8 @@ interface TimeoutImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   timeoutMs?: number;
   alt?: string;
   className?: string;
+  imgClassName?: string;
+  onImageLoad?: (e: React.SyntheticEvent<HTMLImageElement, Event>) => void;
 }
 
 export default function TimeoutImage({
@@ -16,6 +18,8 @@ export default function TimeoutImage({
   timeoutMs = 2500,
   alt = 'Image content',
   className = '',
+  imgClassName = '',
+  onImageLoad,
   ...props
 }: TimeoutImageProps) {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -104,13 +108,16 @@ export default function TimeoutImage({
         <img
           src={imageSrc}
           alt={alt}
+          onLoad={(e) => {
+            if (onImageLoad) onImageLoad(e);
+          }}
           onError={() => {
             if (!hasError) {
               setHasError(true);
               setImageSrc(fallbackSrc);
             }
           }}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          className={`${imgClassName || 'w-full h-full object-cover'} transition-opacity duration-300 ${
             isLoading ? 'opacity-0' : 'opacity-100'
           }`}
           {...props}

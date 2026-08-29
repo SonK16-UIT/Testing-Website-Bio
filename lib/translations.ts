@@ -55,6 +55,9 @@ export const translations = {
     connyPromoArt: 'Conny Promo Art',
     promoCarouselTitle: 'PROMO CAROUSEL (CLICK THUMBNAIL TO SWAP)',
     swipeLabel: 'SWIPE →',
+    promoBtnText: 'Khong xem lam Tho',
+    clickToViewArtwork: 'Click to view landing artwork',
+    featuredLandingTag: 'FEATURED LANDING ARTWORK',
 
     /* Admin Panel i18n Dictionary */
     admin: {
@@ -188,6 +191,9 @@ export const translations = {
     connyPromoArt: 'Tranh Promo Conny',
     promoCarouselTitle: 'ALBUM PROMO (NHẤN ẢNH ĐỂ THAY ĐỔI)',
     swipeLabel: 'VUỐT →',
+    promoBtnText: 'Không xem làm Thỏ',
+    clickToViewArtwork: 'Nhấn để xem tranh landing',
+    featuredLandingTag: 'TRANH NỔI BẬT',
 
     /* Admin Panel i18n Dictionary */
     admin: {
